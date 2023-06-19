@@ -1,88 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML BLOCKS</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HTML BLOCKS</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
-
-<body style="height: 100vh !important;height: 100vw;position: fixed;top: 0;left: 0;">
-  <nav class="navbar p-3" style="background-color: #6366f1;">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1 text-white">HTMLBLOCKS</span>
-      <div>
-        <input class="rounded-5 px-3 border-0" type="search" name="" id="" placeholder="Search block" style="margin-right: 1rem; height: 2.5rem;">
-        <button class="btn btn-light rounded-5 border-1">Copy code</button>
-        <img  style="width: 2.5rem; margin-left: 1rem; cursor: pointer;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png" alt="">
+  <body
+    style="
+      height: 100vh !important;
+      height: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;
+    "
+  >
+    <nav class="navbar p-3" style="background-color: #6366f1">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1 text-white">HTMLBLOCKS</span>
+        <div>
+          <input
+            class="rounded-5 px-3 border-0"
+            type="search"
+            name=""
+            id=""
+            placeholder="Search block"
+            style="margin-right: 1rem; height: 2.5rem"
+          />
+          <button class="btn btn-light rounded-5 border-1">Copy code</button>
+          <img
+            style="width: 2.5rem; margin-left: 1rem; cursor: pointer"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </nav>
+    <div class="d-flex" style="height: calc(100vh - var(--header-height))">
+      <div
+        class="sidebar shadow bg-light p-3"
+        style="width: 9rem"
+        id="sidebar"
+      ></div>
+      <div style="width: calc(100vw - 9rem); flex: 1">
+        <iframe
+          src="./component/error/src/error1.html"
+          frameborder="0"
+          style="width: 100%; height: 100%; padding: 2rem"
+        ></iframe>
       </div>
     </div>
-  </nav>
-  <div class="d-flex" style="height: calc(100vh - var(--header-height))">
-    <div class="sidebar shadow bg-light p-3" style="width: 9rem;" id="sidebar">
-      <div>
-        <p>HEADER</p>
-        <img class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="/component/header/header1.png" alt="">
-        <img class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="/component/header/header2.png" alt="">
-        <img class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="/component/header/header3.png" alt="">
-      </div>
-      <div>
-        <p>HERO</p>
-        <img class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="/component/hero/img/hero1.png" alt="">
-        <img class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="component/hero/img/hero2.png" alt="">
-      </div>
-      <div>
-        <p>FOOTER</p>
-        <img class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="/component/footer/footer1.png" alt="">
-      </div>
-      <div>
-        <p>ERROR</p>
-        <img class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="/component/error/error1.png" alt="">
-      </div>
-      <div>
-        <p>SIDEBAR</p>
-        <img class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="/component/sidebar/img/sidebar.png" alt="">
-      </div>
-    </div>
-    <div style="width: calc(100vw - 9rem); flex: 1">
-      <iframe src="./component/error/src/error1.html" frameborder="0" style="width: 100%;height: 100%; padding: 2rem"></iframe>
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <script type="conponentData">
-    error: 1
-    footer: 1
-    header: 1 2 3
-    hero: 1 2
-    sidebar: 1
-  </script>
-  <script>
-    const rawData = document.querySelector("script[type=conponentData]").innerHTML;
-    const data = rawData.trim().split("\n").filter(el => el.length > 0).map(el => el.split(":")).map(([name, values]) => ({
-      name: name.trim(),
-      values: values.split(" ").filter(el => el.length > 0).map(el => Number(el.trim()))
-    }));
-    const sidebar = document.getElementById("sidebar");
-    const html = data.map(el => `<div><p>${el.name.toLocaleUpperCase()}</p>${el.values.map(value => `<img onclick="setActive('${el.name}', ${value})" class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="component/${el.name}/img/${el.name + value}.png" alt="">`).join("")}</div>`).join("");
-    sidebar.innerHTML = html;
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script type="conponentData">
+      error: 1
+        footer: 1
+        header: 1 2 3
+        hero: 1 2
+        sidebar: 1
+    </script>
+    <script>
+      window.onload = () => {
+        const rawData = document.querySelector(
+          "script[type=conponentData]"
+        ).innerHTML;
+        const data = rawData
+          .trim()
+          .split("\n")
+          .filter((el) => el.length > 0)
+          .map((el) => el.split(":"))
+          .map(([name, values]) => ({
+            name: name.trim(),
+            values: values
+              .split(" ")
+              .filter((el) => el.length > 0)
+              .map((el) => Number(el.trim())),
+          }));
+        const sidebar = document.getElementById("sidebar");
+        const html = data
+          .map(
+            (el) =>
+              `<div><p>${el.name.toLocaleUpperCase()}</p>${el.values
+                .map(
+                  (value) =>
+                    `<img onclick="setActive('${
+                      el.name
+                    }', ${value})" class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="component/${
+                      el.name
+                    }/img/${el.name + value}.png" alt="">`
+                )
+                .join("")}</div>`
+          )
+          .join("");
+        sidebar.innerHTML = html;
 
-    const active = (el) => {
-      el.style.outline = "1px solid blue";
-    }
+        const active = (el) => {
+          el.style.outline = "1px solid blue";
+        };
 
-    const inactive = (el) => {
-      el.style.outline = "none";
-    }
+        const inactive = (el) => {
+          el.style.outline = "none";
+        };
 
-    window.setActive = (name, value) => {
-      sidebar.querySelectorAll("img").forEach(el => inactive(el));
-      active(sidebar.querySelector(`img[src="component/${name}/img/${name + value}.png"]`));
-      document.querySelector("iframe").src = `component/${name}/src/${name + value}.html`;
-    }
+        window.setActive = (name, value) => {
+          sidebar.querySelectorAll("img").forEach((el) => inactive(el));
+          active(
+            sidebar.querySelector(
+              `img[src="component/${name}/img/${name + value}.png"]`
+            )
+          );
+          document.querySelector("iframe").src = `component/${name}/src/${
+            name + value
+          }.html`;
+        };
 
-    document.documentElement.style.setProperty("--header-height", (document.querySelector("nav").clientHeight) + "px");
-  </script>
-</body>
-
+        document.documentElement.style.setProperty(
+          "--header-height",
+          document.querySelector("nav").clientHeight + "px"
+        );
+      };
+    </script>
+  </body>
 </html>
