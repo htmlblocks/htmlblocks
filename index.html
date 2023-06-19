@@ -77,8 +77,8 @@
 
     window.setActive = (name, value) => {
       sidebar.querySelectorAll("img").forEach(el => inactive(el));
-      active(sidebar.querySelector(`img[src="./component/${name}/img/${name + value}.png"]`));
-      document.querySelector("iframe").src = `./component/${name}/src/${name + value}.html`;
+      active(sidebar.querySelector(`img[src="component/${name}/img/${name + value}.png"]`));
+      document.querySelector("iframe").src = `component/${name}/src/${name + value}.html`;
     }
 
     document.documentElement.style.setProperty("--header-height", (document.querySelector("nav").clientHeight) + "px");
