@@ -46,7 +46,7 @@
       </div>
     </div>
     <div style="width: calc(100vw - 9rem); flex: 1">
-      <iframe src="/component/error/src/error1.html" frameborder="0" style="width: 100%;height: 100%; padding: 2rem"></iframe>
+      <iframe src="./component/error/src/error1.html" frameborder="0" style="width: 100%;height: 100%; padding: 2rem"></iframe>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
@@ -77,8 +77,8 @@
 
     window.setActive = (name, value) => {
       sidebar.querySelectorAll("img").forEach(el => inactive(el));
-      active(sidebar.querySelector(`img[src="/component/${name}/img/${name + value}.png"]`));
-      document.querySelector("iframe").src = `/component/${name}/src/${name + value}.html`;
+      active(sidebar.querySelector(`img[src="./component/${name}/img/${name + value}.png"]`));
+      document.querySelector("iframe").src = `./component/${name}/src/${name + value}.html`;
     }
 
     document.documentElement.style.setProperty("--header-height", (document.querySelector("nav").clientHeight) + "px");
