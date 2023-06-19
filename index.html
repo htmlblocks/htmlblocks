@@ -64,7 +64,7 @@
       values: values.split(" ").filter(el => el.length > 0).map(el => Number(el.trim()))
     }));
     const sidebar = document.getElementById("sidebar");
-    const html = data.map(el => `<div><p>${el.name.toLocaleUpperCase()}</p>${el.values.map(value => `<img onclick="setActive('${el.name}', ${value})" class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="/component/${el.name}/img/${el.name + value}.png" alt="">`).join("")}</div>`).join("");
+    const html = data.map(el => `<div><p>${el.name.toLocaleUpperCase()}</p>${el.values.map(value => `<img onclick="setActive('${el.name}', ${value})" class="mb-3 shadow" style="cursor: pointer; height: 4rem;" src="component/${el.name}/img/${el.name + value}.png" alt="">`).join("")}</div>`).join("");
     sidebar.innerHTML = html;
 
     const active = (el) => {
